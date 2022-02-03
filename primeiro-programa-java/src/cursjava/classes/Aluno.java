@@ -5,7 +5,7 @@ import java.util.List;
 
 import curso.constantes.StatusAluno;
 
-public class Aluno {
+public class Aluno extends Pessoa {
     private String nome;
     private int idade;
     private String dataNascimento;
@@ -108,6 +108,13 @@ public class Aluno {
 		}
 		
 		return somaNotas/disciplina.size();
+	}
+	public String getDisciplinaAluno() {
+		String nomeDisciplina ="";
+		for (Disciplina disciplina : disciplina) {
+			nomeDisciplina = disciplina.getDisciplina();
+		}
+		return nomeDisciplina;
 	}
 	
 	public String getAlunoAprovado() {

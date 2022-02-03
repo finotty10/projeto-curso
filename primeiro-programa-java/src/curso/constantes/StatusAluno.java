@@ -1,5 +1,5 @@
 package curso.constantes;
-
+//classe e constantes estaticas
 public class StatusAluno {
 
 	public static String APROVADO = "Aprovado";
