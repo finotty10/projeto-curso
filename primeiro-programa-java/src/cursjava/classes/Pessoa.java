@@ -1,13 +1,18 @@
 package cursjava.classes;
 
 //   Classe Pai ou Classe master (Atributos comuns a todos os filhos)
-public class Pessoa {
+public abstract class Pessoa {
 
         protected String nome;
         protected int idade;
         protected String dataNascimento;
         protected String registroGeral;
         protected String numeroCpf;
+        protected String nomeMae;
+	    protected String nomePai;
+        
+        
+        
 	    public String getNome() {
 			return nome;
 		}
@@ -50,6 +55,11 @@ public class Pessoa {
 		public void setNomePai(String nomePai) {
 			this.nomePai = nomePai;
 		}
-		private String nomeMae;
-	    private String nomePai;
+		//returna true caso seja 18 anos pra cima senao falso
+		public boolean pessoaMaiorIdade() {
+			return idade >= 18;
+		}
+		//metodo abstrato que fica na classe pai é obrigatorio para as classes filhas
+		public abstract double salario();
+		
 }

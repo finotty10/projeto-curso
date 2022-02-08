@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 
 import cursjava.classes.Aluno;
 import cursjava.classes.Disciplina;
+import cursjava.classes.Secretario;
 import curso.constantes.StatusAluno;
 
 public class MainPrincipal {
@@ -18,8 +19,12 @@ public class MainPrincipal {
 		String login = JOptionPane.showInputDialog("Informe o login: ");
 		String senha = JOptionPane.showInputDialog("Informe a senha: ");
 		
-		if(login.equalsIgnoreCase("admin") &&
-			senha.equalsIgnoreCase("1234")) {
+		Secretario secretario = new Secretario();// diretamente com objeto
+		secretario.setLogin(login);
+		secretario.setSenha(senha);
+		
+		if(secretario.autenticar()) { //se true acessa se false nao acessa
+			
 		
 		
 		
@@ -103,6 +108,8 @@ public class MainPrincipal {
 	}
 	
 	
+ }else {
+	 JOptionPane.showMessageDialog(null,"senha incorreta" );
  }
-		}
+}
 }
