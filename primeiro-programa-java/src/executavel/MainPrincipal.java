@@ -20,9 +20,9 @@ public class MainPrincipal {
 		String login = JOptionPane.showInputDialog("Informe o login: ");
 		String senha = JOptionPane.showInputDialog("Informe a senha: ");
 		
-		//PermitirAcesso secretario = new Secretario();// diretamente com objeto
+		PermitirAcesso permitirAcesso = new Secretario(login, senha);
 		
-		if(new Secretario().autenticar(login, senha)) { //se true acessa se false nao acessa
+		if(permitirAcesso.autenticar()) { //se true acessa se false nao acessa
 			
 		
 		
