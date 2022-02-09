@@ -1,32 +1,40 @@
 package executavel;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
 import cursjava.classes.Aluno;
+import cursjava.classes.Diretor;
 import cursjava.classes.Disciplina;
 import cursjava.classes.Secretario;
 import curso.constantes.StatusAluno;
+import cursoJava.classesAuxiliares.FuncaoAutenticacao;
+import cursoJava.excecao.ExcecaoProcessarNota;
 import cursojva.interfaces.PermitirAcesso;
 
 public class MainPrincipal {
 
 	public static void main(String[] args) {
+		
+		try {
+	
+			lerArquivo();
+			
 		String login = JOptionPane.showInputDialog("Informe o login: ");
 		String senha = JOptionPane.showInputDialog("Informe a senha: ");
 		
-		PermitirAcesso permitirAcesso = new Secretario(login, senha);
-		
-		if(permitirAcesso.autenticar()) { //se true acessa se false nao acessa
+
+		if(new FuncaoAutenticacao(new Diretor(login, senha)).autenticar()) { //vou travar o contrato para autorizar somente quem realmente tem o contrato 100% legitimo
 			
-		
-		
-		
+	
    /*Objeto real na memoria*/
 	List<Aluno> alunos = new ArrayList<Aluno>();
 	//Lista que dentro dela temos uma chave que identifica uma sequencia de valores
@@ -110,5 +118,20 @@ public class MainPrincipal {
  }else {
 	 JOptionPane.showMessageDialog(null,"senha incorreta" );
  }
+}catch (ExcecaoProcessarNota e) {
+	e.printStackTrace();
+	JOptionPane.showMessageDialog(null, "Erro da execução customizada : "+ e.getClass().getName());
+}finally {// sempre é executado tendo erro ou nao
+	JOptionPane.showMessageDialog(null, "deu certinho, ou nao");
 }
+}
+	public static void lerArquivo() throws ExcecaoProcessarNota {
+		try {
+			File fil = new File("c://lines.txt");
+			Scanner scanner = new Scanner(fil);
+		}catch (FileNotFoundException e) {
+			throw new ExcecaoProcessarNota(e.getMessage());
+		}
+		
+	}
 }
