@@ -26,7 +26,7 @@ public class MainPrincipal {
 		
 		try {
 	
-			lerArquivo();
+		//	lerArquivo();
 			
 		String login = JOptionPane.showInputDialog("Informe o login: ");
 		String senha = JOptionPane.showInputDialog("Informe a senha: ");
@@ -40,7 +40,7 @@ public class MainPrincipal {
 	//Lista que dentro dela temos uma chave que identifica uma sequencia de valores
 	HashMap<String, List<Aluno>> maps = new HashMap<String, List<Aluno>>();
 	
-	for(int qtd =1; qtd <=5; qtd++) {
+	for(int qtd =1; qtd <=1; qtd++) {
 	
 	String nome = JOptionPane.showInputDialog("Qual o nome do aluno?"+qtd+"");
 	//String idade = JOptionPane.showInputDialog("Qual a idade?");
@@ -118,20 +118,31 @@ public class MainPrincipal {
  }else {
 	 JOptionPane.showMessageDialog(null,"senha incorreta" );
  }
-}catch (ExcecaoProcessarNota e) {
+}catch (Exception e) {
+	StringBuilder saida = new StringBuilder();
+	
 	e.printStackTrace();
-	JOptionPane.showMessageDialog(null, "Erro da execução customizada : "+ e.getClass().getName());
-}finally {// sempre é executado tendo erro ou nao
+	System.out.println("Mensagem: " + e.getMessage());
+	//JOptionPane.showMessageDialog(null, "Erro da execução customizada : "+ e.getClass().getName());
+
+	 for(int i =0; i < e.getStackTrace().length; i++) {
+		 saida.append("\n Classe de erro: " + e.getStackTrace()[i].getClassName());
+		 saida.append("\n Método de erro: " + e.getStackTrace()[i].getMethodName());
+		 saida.append("\n Linha de erro: " + e.getStackTrace()[i].getLineNumber());
+		 saida.append("\n Class: " + e.getStackTrace()[i].getClass().getName());
+	 }
+	 
+	 JOptionPane.showMessageDialog(null, "Erro de conversao de numero"+ saida.toString());
+	
+ }finally {// sempre é executado tendo erro ou nao
 	JOptionPane.showMessageDialog(null, "deu certinho, ou nao");
 }
 }
-	public static void lerArquivo() throws ExcecaoProcessarNota {
-		try {
+	public static void lerArquivo() throws  FileNotFoundException {
+		
 			File fil = new File("c://lines.txt");
 			Scanner scanner = new Scanner(fil);
-		}catch (FileNotFoundException e) {
-			throw new ExcecaoProcessarNota(e.getMessage());
-		}
+	
 		
 	}
 }
