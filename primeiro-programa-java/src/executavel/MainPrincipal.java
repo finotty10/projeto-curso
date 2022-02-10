@@ -56,7 +56,7 @@ public class MainPrincipal {
 		Disciplina disciplina = new Disciplina();
 		
 		disciplina.setDisciplina(nomeDisciplina);
-		disciplina.setNota(Double.parseDouble(nota));
+		//disciplina.setNota(Double.parseDouble(nota));
 		
 		aluno1.getDisciplina().add(disciplina);
 		
